@@ -101,13 +101,12 @@
           });
 
           socket.on('usernames', function(data){
-            var html = '';
+            var html = 'Online Users (' + data.length + ')<br><br>';
             for(i = 0; i < data.length; i++){
-              html = 'Online Users (' + data.length + ')<br><br>'
               html += data[i] + '<br>';
             }
             $users.html(html);
-          })
+          });
 
           $messageForm.submit(function(e){
             e.preventDefault();
