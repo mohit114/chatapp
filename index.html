@@ -69,7 +69,6 @@
                     </form>
               </div>
               <div id="userWrapper">
-                    Online Users <br/>
                   <div id="users"></div>
               </div>
           </div>
@@ -104,6 +103,7 @@
           socket.on('usernames', function(data){
             var html = '';
             for(i = 0; i < data.length; i++){
+              html = 'Online Users (' + data.length + ')<br><br>'
               html += data[i] + '<br>';
             }
             $users.html(html);
