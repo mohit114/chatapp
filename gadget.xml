@@ -1,9 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
+<?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-  <ModulePrefs title="hello world example" /> 
+  <ModulePrefs title="Zombies!" height="350" />
   <Content type="html">
-     <![CDATA[ 
-       Hello, world!
-     ]]>
-  </Content> 
+  <![CDATA[
+  <div id="zombiecontainer"
+    style="text-align:center;">
+  </div>
+  <script type="text/javascript">
+  var counter = 0;
+
+  // Preload the images using gadgets.io.getProxyUrl()
+  function load(imageList) {
+    var ret = [];
+    for (var i = 0, j = imageList.length; i < j; ++i) {
+      var img = document.createElement("img");
+      img.src = gadgets.io.getProxyUrl(imageList[i]);
+      ret.push(img);
+    }
+    return ret;
+  }
+
+  var files = [
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-0.jpg",
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-1.jpg",
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-2.jpg",
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-3.jpg",
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-4.jpg",
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-5.jpg",
+    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-6.jpg"
+  ];
+
+  var images = load(files);
+  browse();
+
+  // Browse through photos sequentially. When you get to the end of the array, start over.
+  function browse(){
+    if (counter == images.length)
+    {
+      counter = 0;
+    }
+    document.getElementById("zombiecontainer").innerHTML = "";
+    document.getElementById("zombiecontainer").appendChild(images[counter]);
+    counter++;
+  }
+
+  </script>
+  <br />
+  <div style="text-align: center;">
+    <input type=submit value="Next ->" onClick="browse()">
+  </div>
+  ]]>
+  </Content>
 </Module>
