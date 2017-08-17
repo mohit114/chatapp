@@ -1,54 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-  <ModulePrefs title="Zombies!" height="350" />
+  <ModulePrefs title="Tabs Demo" height="140" scrolling="true" >
+    <Require feature="tabs" />
+  </ModulePrefs>
   <Content type="html">
   <![CDATA[
-  <div id="zombiecontainer"
-    style="text-align:center;">
-  </div>
-  <script type="text/javascript">
-  var counter = 0;
 
-  // Preload the images using gadgets.io.getProxyUrl()
-  function load(imageList) {
-    var ret = [];
-    for (var i = 0, j = imageList.length; i < j; ++i) {
-      var img = document.createElement("img");
-      img.src = gadgets.io.getProxyUrl(imageList[i]);
-      ret.push(img);
+    <script type="text/javascript">
+    // Initialize tabs, designate the tab named "Two" as
+    // the tab selected by default.
+    var tabs = new gadgets.TabSet(__MODULE_ID__, "Two");
+    function init() {
+        // Technique #1: Capture the tab's ID when you create it, and use the ID
+        // to add content to the tab's corresponding <div>.
+        var one_Id = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Cool Tab</div>');
+        document.getElementById(one_Id).innerHTML = "Content for tab One.";
+
+        // Technique #2: Create the tab and define a corresponding <div> in the
+        // HTML portion of the gadget. Add static content to the <div>.
+
+        tabs.addTab("Two", {
+           contentContainer: document.getElementById("two_id")
+        });
+
+        // Technique #3: Create the tab and define a corresponding <div> in the
+        // HTML portion of the gadget. Add static content to the <div>.
+        // Use a callback function to add dynamic content to the static content.
+
+        tabs.addTab("Three", {
+           contentContainer: document.getElementById("three_id"),
+           callback: callback
+        });
+
+        // Technique #4: Create the tab with a tooltip message. If specified <div>
+        // doesn't exist, tabs library creates one.
+        // Invoke callback function.
+        tabs.addTab("Four", {
+           contentContainer: document.getElementById("four_id"),
+           callback: callback,
+           tooltip: "I'm special"
+        });
     }
-    return ret;
-  }
 
-  var files = [
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-0.jpg",
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-1.jpg",
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-2.jpg",
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-3.jpg",
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-4.jpg",
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-5.jpg",
-    "http://gadget-doc-examples.googlecode.com/svn/trunk/zombie-6.jpg"
-  ];
-
-  var images = load(files);
-  browse();
-
-  // Browse through photos sequentially. When you get to the end of the array, start over.
-  function browse(){
-    if (counter == images.length)
-    {
-      counter = 0;
+    // Callback that provides content to tabs Three and Four
+    function callback(tabId) {
+      var p = document.createElement("p");
+      // Get selected tab
+      var selectedTab = tabs.getSelectedTab();
+      p.innerHTML = "This is dynamic content generated in callback for tab " + selectedTab.getName();
+      document.getElementById(tabId).appendChild(p);
     }
-    document.getElementById("zombiecontainer").innerHTML = "";
-    document.getElementById("zombiecontainer").appendChild(images[counter]);
-    counter++;
-  }
 
-  </script>
-  <br />
-  <div style="text-align: center;">
-    <input type=submit value="Next ->" onClick="browse()">
-  </div>
+    // Call init function to initialize and display tabs.
+    gadgets.util.registerOnLoadHandler(init);
+    </script>
+
+   <div id="two_id" style="display:none">Content for tab Two.</div>
+   <div id="three_id" style="display:none">This is static content for tab Three.</div>
   ]]>
   </Content>
 </Module>
