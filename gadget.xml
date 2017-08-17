@@ -11,7 +11,7 @@
       gadgets.window.setTitle(newTitle);
     }
     </script>
-<FORM NAME="myform" ACTION="" METHOD="GET">Change the Gadget Title: <BR><BR>
+<FORM style="display:none" NAME="myform" ACTION="" METHOD="GET">Change the Gadget Title: <BR><BR>
 <INPUT TYPE="text" NAME="inputbox" VALUE=""><BR><BR>
 <INPUT TYPE="button" NAME="button" Value="Change Title" onClick="changeTitle(this.form)">
 </FORM>
