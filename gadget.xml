@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Hello Example">
+      title_url="http://mohit.com.np/"
+      height="200"
+      author="Aartha Mail"
+      author_email="mohitmaharjan7@gmail.com"
+      <Require feature="tabs"/>
+      <Require feature="setprefs"/>
+    </ModulePrefs>
+    <Content type="html">
+     <![CDATA[
+    <script>
+      var tabs = new gadgets.TabSet(__MODULE_ID__, "Two");
+      function init(){
+      var one_Id = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Cool Tab</div>');
+        document.getElementById(one_Id).innerHTML = "Content for tab One.";
+      }
+      gadgets.util.registerOnLoadHandler(init);
+    </script>
+     ]]>
+    </Content>
+</Module>
