@@ -10,19 +10,20 @@
     </ModulePrefs>
     <Content type="html">
      <![CDATA[
-     <label id="aarthaMail">Aartha Mail</label>
+
     <script>
       var tabs = new gadgets.TabSet();
       function init(){
+      <label id="aarthaMail">Aartha Mail</label>
       var tab_profile = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Profile</div>');
         document.getElementById(tab_profile).innerHTML = "Content for tab profile.";
-      var tab_email = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Profile</div>');
+      var tab_email = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Emails</div>');
         document.getElementById(tab_email).innerHTML = "Content for tab emails.";
-      var tab_attachment = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Profile</div>');
+      var tab_attachment = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Attachments</div>');
         document.getElementById(tab_attachment).innerHTML = "Content for tab attachments.";
-      var tab_link = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Profile</div>');
+      var tab_link = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Links</div>');
         document.getElementById(tab_link).innerHTML = "Content for tab links.";
-      var tab_time = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Profile</div>');
+      var tab_time = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Time</div>');
         document.getElementById(tab_time).innerHTML = "Content for tab time.";
       }
       gadgets.util.registerOnLoadHandler(init);
