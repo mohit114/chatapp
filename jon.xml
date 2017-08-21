@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><Module>
+<ModulePrefs title="popup" /><Content type="html"><![CDATA[<a href="javascript:void(0)"onclick="window.open('http://w8shi.net','miniwin','left=25,top=25,screenX=25,screenY=25,toolbar=0,location=0,
+directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width=700,height=600'); return false;">Click</a>]]></Content></Module>
