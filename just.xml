@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Hello World!" height="100">
+    <Require feature="views"/>
+  </ModulePrefs>
+  <Content type="html" view="home">
+    <![CDATA[
+        <script type="text/javascript">
+          function GoToCanvas()
+          {
+                gadgets.views.requestNavigateTo(new gadgets.views.View("canvas"));
+          }
+        </script>
+        <p>Hello, world!</p>
+        <p><a href="javascript:GoToCanvas()">Canvas View...</a></p>
+    ]]>
+  </Content>
+  <Content type="html" view="canvas">
+    <![CDATA[
+        <p style="font-size: 8em;">Hello, world!</p>
+    ]]>
+  </Content>
+</Module>
